@@ -1,17 +1,31 @@
 # install dependencies
-npm install
+composer install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Create a copy of your .env file
+cp .env.example .env
 
-# build for production with minification
-npm run build
+# Generate an app encryption key
+php artisan key:generate
+# --> Mở file .env đổi DB_DATABASE= yên database của bạn đã tạo trong mysql lưu ý chỉ cần có thôi không cần tạo table .
+# --> Chạy service mysql tại port 3306  
+# --> user name và  password tùy máy bạn
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=managergym
+# DB_USERNAME=root
+# DB_PASSWORD=
+ 
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# Migrate the database
+Migrate the database
 
-# run unit tests
-npm run unit
+# Installation Passport
+php artisan passport:install
 
-# run all tests
-npm test
+
+# Seed the database
+php artisan db:seed
+
+# serve 
+cpmposer artisan serve
+

@@ -27,5 +27,5 @@ php artisan passport:install
 php artisan db:seed
 
 # serve 
-cpmposer artisan serve
+composer artisan serve
 

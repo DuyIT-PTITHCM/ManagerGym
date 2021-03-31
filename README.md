@@ -26,6 +26,9 @@ php artisan passport:install
 # Seed the database
 php artisan db:seed
 
+# clear config
+php artisan config:clear
+php artisan config:cache
 # serve 
-composer artisan serve
+php artisan serve
 

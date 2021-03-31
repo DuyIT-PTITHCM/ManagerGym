@@ -28,6 +28,7 @@ php artisan db:seed
 
 # clear config
 php artisan config:clear
+# clear cache
 php artisan config:cache
 # serve 
 php artisan serve

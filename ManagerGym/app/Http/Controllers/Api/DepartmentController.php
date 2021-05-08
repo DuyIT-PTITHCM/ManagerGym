@@ -18,7 +18,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::with('user')->paginate(5);
+        return Department::with('user')->paginate(20);
     }
 
     /**

@@ -15,7 +15,7 @@ class PurchasingController extends Controller
      */
     public function index()
     {
-        return Purchasing::paginate(5);
+        return Purchasing::paginate(20);
     }
 
     /**

@@ -15,7 +15,7 @@ class ServiceHandle extends Controller
      */
     public function index()
     {
-        return Service::paginate(10);
+        return Service::paginate(20);
     }
 
     /**

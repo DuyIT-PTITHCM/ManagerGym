@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Department;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use PHPUnit\Util\Json;
 
 class UserController extends Controller
 {
@@ -19,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
         $roleId  = Role::where('name','admin')->first()->id;
-        return  User::with('department','role')->where('role_id','<>',$roleId)->paginate(5);
+        return  User::with('department','role')->where('role_id','<>',$roleId)->paginate(20);
     }
 
     /**
@@ -83,5 +86,23 @@ class UserController extends Controller
     }
     public function getAll(){
         return User::all();
+    }
+    public function changePassword(ChangePasswordRequest $request){
+        $listInput = $request->only('old_password','new_password');
+         $userLogin =  Auth::user();
+         if (Hash::check(($listInput['old_password']) ,$userLogin->password)) {
+            $userLogin->password = Hash::make($listInput['new_password']);
+            $userLogin->save();
+            return response()->json([
+                'error'=>false,
+                'data'=>'ok',
+                'status'=>200
+            ]);
+        }
+        return response()->json([
+            'error'=>true,
+            'data'=>'not ok',
+            'status'=>500
+        ]);
     }
 }

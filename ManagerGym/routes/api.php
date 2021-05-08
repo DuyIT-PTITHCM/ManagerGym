@@ -21,6 +21,9 @@ Route::post('login','Api\LoginController@Login');
 
 Route::post('register','Api\Register@Register')->middleware('auth:api');
 Route::apiResource('user','Api\UserController')->middleware('auth:api','uservalidater');
+
+Route::post('change-password','Api\UserController@changePassword')->middleware('auth:api');
+
 Route::apiResource('department','Api\DepartmentController')->middleware('auth:api','uservalidater');
 Route::apiResource('device','Api\DeviceController')->middleware('auth:api');
 Route::apiResource('devicepartner','Api\PartnerDeviceController')->middleware('auth:api');

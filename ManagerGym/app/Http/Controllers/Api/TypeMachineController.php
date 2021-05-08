@@ -17,7 +17,7 @@ class TypeMachineController extends Controller
      */
     public function index()
     {
-        return TypeMachine::paginate(5);
+        return TypeMachine::paginate(25);
     }
 
     /**
